@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "580c0fca-0bd4-4bed-a942-efd8a1c5eb89",
+		"name": "test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45132664",
+		"_collection_link": "https://mano-3747883.postman.co/workspace/Mano's-Workspace~128902dc-1c1b-4f36-8e48-be91c738cf6d/collection/45132664-580c0fca-0bd4-4bed-a942-efd8a1c5eb89?action=share&source=collection_link&creator=45132664"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "newpassword123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{user}}sign_in.php",
+							"host": [
+								"{{user}}sign_in",
+								"php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "aapple.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "www",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{user}}sign_up.php",
+							"host": [
+								"{{user}}sign_up",
+								"php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "aapple.com",
+									"type": "text"
+								},
+								{
+									"key": "verifie",
+									"value": "591414",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{user}}verify_email.php",
+							"host": [
+								"{{user}}verify_email",
+								"php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "notapple.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{user}}send_code.php",
+							"host": [
+								"{{user}}send_code",
+								"php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "notapple.com",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "625768",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{user}}verify_code.php",
+							"host": [
+								"{{user}}verify_code",
+								"php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "m.osman2194@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "newpassword123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{user}}change_password.php",
+							"host": [
+								"{{user}}change_password",
+								"php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "newpassword123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{user}}delete_account.php",
+							"host": [
+								"{{user}}delete_account",
+								"php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get profiles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "lat",
+							"value": "30.033000",
+							"type": "text"
+						},
+						{
+							"key": "lng",
+							"value": "31.000000",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "17",
+							"description": "optional",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{server}}get_profiles.php",
+					"host": [
+						"{{server}}get_profiles",
+						"php"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost/",
+			"type": "string"
+		},
+		{
+			"key": "user",
+			"value": "{{server}}users/",
+			"type": "string"
+		}
+	]
+}
