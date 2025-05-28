@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 require $_SERVER['DOCUMENT_ROOT'] . '/db.php';
 
 if (!isset($_POST['lat'], $_POST['lng'])) {
-    echo json_encode(['stat' => false, 'message' => 'lat and lng required']);
+    echo json_encode(['stat' => false, 'message' => 'Bad request']);
     exit;
 }
 $lat = $_POST['lat'];
@@ -24,7 +24,7 @@ if (isset($_POST['user_id'])) {
 }
 
 // Haversine formula in SQL to calculate distance in kilometers using positional placeholders
-$sql = "SELECT u.id,p.name,p.bio,p.age,(
+$sql = "SELECT u.id,i.url,p.name,p.bio,p.age,p.instagram,(
     6371 * acos(
         cos(radians(?)) * cos(radians(l.lat)) *
         cos(radians(l.lng) - radians(?)) +
@@ -34,6 +34,7 @@ $sql = "SELECT u.id,p.name,p.bio,p.age,(
 FROM users u
 JOIN lats_lngs l ON u.id = l.user_id
 JOIN profiles p ON u.id = p.user_id
+LEFT JOIN images i ON u.id = i.user_id
 WHERE l.last_update >= (NOW() - INTERVAL 10 MINUTE)
 ORDER BY distance ASC
 LIMIT 200";
@@ -42,4 +43,3 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$lat, $lng, $lat]);
 $users = $stmt->fetchAll();
 echo json_encode(['stat' => true, 'users' => $users]);
-?>

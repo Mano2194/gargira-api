@@ -3,11 +3,12 @@ header('Content-Type: application/json');
 require $_SERVER['DOCUMENT_ROOT'] . '/db.php';
 
 if (!isset($_POST['user_id'])) {
-    echo json_encode(['stat' => false, 'message' => 'user id required']);
+    echo json_encode(['stat' => false, 'message' => 'Bad request']);
     exit;
 }
-// Check if user exists
 $user_id = $_POST['user_id'];
+
+// Check if user exists
 $stmt = $pdo->prepare("SELECT id FROM users WHERE id=?");
 $stmt->execute([$user_id]);
 if (!$stmt->fetch()) {
@@ -38,6 +39,14 @@ if (isset($_POST['age'])) {
     $stmt->execute([$user_id, $age, $age]);
     $inputs = true;
 }
+if (isset($_POST['instagram'])) {
+    $instagram = $_POST['instagram'];
+    $stmt = $pdo->prepare('INSERT INTO profiles (user_id, instagram) VALUES (?, ?)
+    ON DUPLICATE KEY UPDATE instagram = ?');
+    $stmt->execute([$user_id, $instagram, $instagram]);
+    $inputs = true;
+}
+
 if ($inputs) {
     echo json_encode(['stat' => true, 'message' => 'Profile updated successfully']);
 } else {
